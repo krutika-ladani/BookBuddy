@@ -4,7 +4,7 @@
 
 ## Project Info 
 BookBuddy is a fully responsive website for finding and reviewing books of your choice.  
-Using the intuitive search feature, you can easily find books by entering their titles, authors, or genres.  
+Using It's intuitive search feature, you can easily find books by entering their titles, authors, or genres.  
 Each book listing provides direct links to the reputable online platform "Open Library" where you can purchase or learn more about them.  
 It is integrated with the OpenLibrary API to fetch the real time data.
 
