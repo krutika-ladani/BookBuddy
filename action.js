@@ -1,4 +1,4 @@
-
+//This is the main function which will create a div for each book and display all the details in the proper format
 function search_book()
 {
     var search = document.getElementById("searchbar").value.toLowerCase();
@@ -46,11 +46,10 @@ function search_book()
             rating(response.docs[i].key,i);
         }
     })
-
-
 }
 
-function description(url_spec)
+//This function fetches the description of the book
+/*function description(url_spec)
 {
     var text;
     fetch("https://openlibrary.org"+url_spec+".json")
@@ -75,8 +74,9 @@ function description(url_spec)
             return "description not available";
         }
     })
-}
+}*/
 
+//this function wil fetch and display rating out of 5 by rounding it to the latest integer
 function rating(url_spec,book_no)
 {
     fetch("https://openlibrary.org"+url_spec+"/ratings.json")
