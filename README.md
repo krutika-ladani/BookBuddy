@@ -11,12 +11,12 @@ It is integrated with the OpenLibrary API to fetch the real time data.
 
 ## Technologies Used
 The website is built using:-  
- ■HTML5 (Structuring)  
- ■CSS3 (Styling)  
- ■Javascript (Server side scripting)  
- ■Open Library (API)  
- ■Git/GitHub (Version control)  
- ■Netlify (Hosting)  
+ ●HTML5 (Structuring)  
+ ●CSS3 (Styling)  
+ ●Javascript (Server side scripting)  
+ ●Open Library (API)  
+ ●Git/GitHub (Version control)  
+ ●Netlify (Hosting)  
  
  ## Direct website link
   https://bookbuddy.netlify.app/
