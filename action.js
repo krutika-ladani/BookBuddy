@@ -48,6 +48,28 @@ function search_book()
     })
 }
 
+//this function wil fetch and display rating out of 5 by rounding it to the latest integer
+function rating(url_spec,book_no)
+{
+    fetch("https://openlibrary.org"+url_spec+"/ratings.json")
+    .then(a=>a.json())
+    .then(response=>{
+        var rating=document.getElementsByClassName("rating");
+        rating[book_no].innerHTML='<span class="material-symbols-outlined star">star</span>'+
+            '<span class="material-symbols-outlined star">star</span>'+
+            '<span class="material-symbols-outlined star">star</span>'+
+            '<span class="material-symbols-outlined star">star</span>'+
+            '<span class="material-symbols-outlined star">star</span>'
+        var stars=document.getElementsByClassName("star");
+
+        for(var j=0;j<Math.round(response.summary.average);j++)
+        {
+            stars[book_no*5+j].style.color="rgb(255, 145, 0)";
+        }
+
+    })
+}
+
 //This function fetches the description of the book
 /*function description(url_spec)
 {
@@ -75,26 +97,4 @@ function search_book()
         }
     })
 }*/
-
-//this function wil fetch and display rating out of 5 by rounding it to the latest integer
-function rating(url_spec,book_no)
-{
-    fetch("https://openlibrary.org"+url_spec+"/ratings.json")
-    .then(a=>a.json())
-    .then(response=>{
-        var rating=document.getElementsByClassName("rating");
-        rating[book_no].innerHTML='<span class="material-symbols-outlined star">star</span>'+
-            '<span class="material-symbols-outlined star">star</span>'+
-            '<span class="material-symbols-outlined star">star</span>'+
-            '<span class="material-symbols-outlined star">star</span>'+
-            '<span class="material-symbols-outlined star">star</span>'
-        var stars=document.getElementsByClassName("star");
-
-        for(var j=0;j<Math.round(response.summary.average);j++)
-        {
-            stars[book_no*5+j].style.color="rgb(158, 92, 41)";
-        }
-
-    })
-}
 
