@@ -5,7 +5,7 @@ function search_book()
     var container = document.getElementById("content");
     container.innerHTML="";
     fetch("https://openlibrary.org/search.json?q="+search)
-    .then(alert("It might a few seconds to load the data. \nSorry for the inconvinience! \nPlease wait..."))
+    .then(alert("It might take a few seconds to load the data. \nPlease wait..."))
     .then(a=>a.json())
     .then(response=>{
         for(var i=0;i<response.docs.length;i++)
