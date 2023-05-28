@@ -5,7 +5,7 @@ function search_book()
     var container = document.getElementById("content");
     container.innerHTML="";
     fetch("https://openlibrary.org/search.json?q="+search)
-    .then(alert("It might take some time to load the data. \nSorry for the inconvinience! \nPlease wait..."))
+    .then(alert("It might a few seconds to load the data. \nSorry for the inconvinience! \nPlease wait..."))
     .then(a=>a.json())
     .then(response=>{
         for(var i=0;i<response.docs.length;i++)
@@ -33,17 +33,24 @@ function search_book()
                         '<span style="font-weight:500; color:rgb(122, 72, 15)">'+
                             'First publish year: '+
                         '</span>'+
-                        response.docs[i].first_publish_year +'<br><br>'+
-                        '<button style="background-color:rgb(255, 195, 104); width:120px; height:20px; border:none; border-radius:10px;" onclick="display(\''+response.docs[i].key+'\')">view more</button>'
+                        response.docs[i].first_publish_year +'<br>'+
+                        '<div class="rating"></div>'+
+
+                        /*'<button id="vm" onclick="display(\''+response.docs[i].key+'\')">view more</button>'+*/
+                        
+                        '<a href="https://openlibrary.org'+response.docs[i].key+'" id="link">Redirect to the book page</a>'
+
                     '</div>'+
                 '</div>'+
             '</div>';
+            rating(response.docs[i].key,i);
         }
     })
 
+
 }
 
-function display(url_spec)
+function description(url_spec)
 {
     var text;
     fetch("https://openlibrary.org"+url_spec+".json")
@@ -53,20 +60,41 @@ function display(url_spec)
         { 
             if(typeof response.description=='string')
             {
-                alert(response.description);
+                return response.description;
             }
             else if(typeof response.description.value!='undefined')
             {
                 if(typeof response.description.value=='string')
                 {
-                    alert(response.description.value);
+                    return response.description.value;
                 }
             }
         }
         else
         {
-            alert("description not available");
+            return "description not available";
         }
+    })
+}
+
+function rating(url_spec,book_no)
+{
+    fetch("https://openlibrary.org"+url_spec+"/ratings.json")
+    .then(a=>a.json())
+    .then(response=>{
+        var rating=document.getElementsByClassName("rating");
+        rating[book_no].innerHTML='<span class="material-symbols-outlined star">star</span>'+
+            '<span class="material-symbols-outlined star">star</span>'+
+            '<span class="material-symbols-outlined star">star</span>'+
+            '<span class="material-symbols-outlined star">star</span>'+
+            '<span class="material-symbols-outlined star">star</span>'
+        var stars=document.getElementsByClassName("star");
+
+        for(var j=0;j<Math.round(response.summary.average);j++)
+        {
+            stars[book_no*5+j].style.color="rgb(158, 92, 41)";
+        }
+
     })
 }
 
