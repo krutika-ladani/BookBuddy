@@ -10,7 +10,7 @@ It is integrated with the OpenLibrary API to fetch the real time data.
 
 
 ## Technologies Used
-The website is built using:-  
+This project is built using:-  
  ●HTML5 (Structuring)  
  ●CSS3 (Styling)  
  ●Javascript (Server side scripting)  
