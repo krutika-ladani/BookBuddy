@@ -13,7 +13,7 @@ It is integrated with the OpenLibrary API to fetch the real time data.
 This project is built using:-  
  - HTML5 (Structuring)  
  - CSS3 (Styling)  
- - JavaScript (Server side scripting)  
+ - JavaScript (Client side scripting)  
  - Open Library (API)  
  - Git/GitHub (Version control)  
  - Netlify (Hosting)  
